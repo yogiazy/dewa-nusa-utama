@@ -203,13 +203,14 @@
                 field-of-view="40deg"
                 exposure="0.7"
                 camera-orbit="-45deg 80deg 4m"
-                disable-pan
-                disable-tap
-                skybox-image="/models/bg.jpg"
-                skybox-height="1.5m"
-                shadow-intensity="1"
+                min-camera-orbit="-180deg 30deg auto"
+                max-camera-orbit="180deg 90deg auto"
+                disable-pan disable-tap
+                skybox-image="/models/bg.jpg" skybox-height="1.5m" shadow-intensity="1"
                 environment-image="legacy"
-                camera-controls></model-viewer>
+                camera-controls>
+            </model-viewer>
+
         </div>
     </div>
 
