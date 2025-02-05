@@ -1,84 +1,92 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
+
 <head>
+    <title>Dewa Nusa Utama</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Website Perumahan dengan Optimasi SEO, Integrasi Google Ads, dan Google Analytics.">
-    <meta name="keywords" content="perumahan, seo, google ads, google analytics, laravel">
-    <title>Website Perumahan - Optimasi SEO & Integrasi Google Ads</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="/img/logo-dnu.jpg">
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #808080;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .landing-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #glb-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+        }
+
+        model-viewer {
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+        }
+
+        .logo-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 20px;
+            z-index: 99;
+        }
+
+        .logo-container img {
+            width: 90vw;
+        }
+
+        @media (min-width: 768px) {
+            .logo-container img {
+                width: 30vw;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <header>
-        <div class="container">
-            <h1>Website Perumahan Berbasis Laravel</h1>
-            <p>Optimasi SEO, Integrasi Google Ads, dan Google Analytics</p>
-            <a href="#features" class="btn">Lihat Fitur</a>
+    <div class="logo-container">
+        <img src="img/banner.png" alt="">
+    </div>
+    <div class="landing-container">
+        <div id="glb-container">
+            <model-viewer id="modelViewer" src="/models/rumah_modern_contemporer/scene.gltf" alt="A 3D model"
+                touch-action="pan-y" field-of-view="40deg" exposure="0.3" camera-orbit="-45deg 80deg 4m"
+                camera-controls></model-viewer>
         </div>
-    </header>
+    </div>
 
-    <section id="features" class="features">
-        <div class="container">
-            <h2>Fitur Utama Website</h2>
-            <div class="feature-grid">
-                <div class="feature-item">
-                    <img src="https://via.placeholder.com/150" alt="Halaman Utama">
-                    <h3>Halaman Utama</h3>
-                    <p>Menampilkan daftar perumahan dengan gambar dan deskripsi singkat.</p>
-                </div>
-                <div class="feature-item">
-                    <img src="https://via.placeholder.com/150" alt="Halaman Detail Perumahan">
-                    <h3>Halaman Detail Perumahan</h3>
-                    <p>Informasi mendalam tentang setiap perumahan, termasuk harga, fasilitas, dan lokasi.</p>
-                </div>
-                <div class="feature-item">
-                    <img src="https://via.placeholder.com/150" alt="Form Kontak">
-                    <h3>Form Kontak</h3>
-                    <p>Memudahkan pengunjung untuk menghubungi tim penjualan.</p>
-                </div>
-                <div class="feature-item">
-                    <img src="https://via.placeholder.com/150" alt="Blog">
-                    <h3>Blog</h3>
-                    <p>Konten berkualitas untuk meningkatkan SEO dan memberikan informasi berguna.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <script>
+        function isMobileDevice() {
+            return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.matchMedia("(max-width: 768px)").matches;
+        }
 
-    <section id="seo" class="seo">
-        <div class="container">
-            <h2>Strategi Optimasi SEO</h2>
-            <ul>
-                <li>Penelitian Kata Kunci</li>
-                <li>Optimasi Konten</li>
-                <li>Meta Tag dan Deskripsi</li>
-                <li>Kecepatan Website</li>
-                <li>Mobile-Friendly</li>
-            </ul>
-        </div>
-    </section>
+        function updateModelViewer() {
+            const modelViewer = document.getElementById('modelViewer');
 
-    <section id="analytics" class="analytics">
-        <div class="container">
-            <h2>Integrasi Google Analytics</h2>
-            <p>Kami menggunakan Google Analytics untuk melacak perilaku pengunjung dan mengoptimalkan strategi pemasaran.</p>
-            <a href="#contact" class="btn">Hubungi Kami</a>
-        </div>
-    </section>
-
-    <footer id="contact">
-        <div class="container">
-            <h2>Hubungi Kami</h2>
-            <form id="contactForm">
-                <input type="text" id="name" placeholder="Nama Anda" required>
-                <input type="email" id="email" placeholder="Email Anda" required>
-                <textarea id="message" placeholder="Pesan Anda" required></textarea>
-                <button type="submit">Kirim Pesan</button>
-            </form>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+            if (isMobileDevice()) {
+                modelViewer.setAttribute('camera-orbit', '-25deg 85deg 1m');
+                modelViewer.setAttribute('field-of-view', '45deg');
+            } else {
+                modelViewer.setAttribute('camera-orbit', '-45deg 80deg 4m');
+                modelViewer.setAttribute('field-of-view', '40deg');
+            }
+        }
+        document.addEventListener('DOMContentLoaded', updateModelViewer);
+    </script>
 </body>
+
 </html>
