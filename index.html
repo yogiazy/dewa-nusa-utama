@@ -45,6 +45,8 @@
             left: 0;
             width: 100%;
             height: 100vh;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
         }
 
         model-viewer {
@@ -199,15 +201,9 @@
     <div class="landing-container">
         <div id="glb-container">
             <model-viewer id="modelViewer" src="/models/rumah_modern_contemporer/scene.gltf" alt="A 3D model"
-                touch-action="pan-y"
-                field-of-view="40deg"
-                exposure="0.7"
-                camera-orbit="-45deg 80deg 4m"
-                min-camera-orbit="-180deg 30deg auto"
-                max-camera-orbit="180deg 90deg auto"
-                disable-pan disable-tap
-                skybox-image="/models/bg.jpg" skybox-height="1.5m" shadow-intensity="1"
-                environment-image="legacy"
+                touch-action="pan-y" field-of-view="40deg" exposure="0.7" camera-orbit="-45deg 80deg 4m"
+                min-camera-orbit="-180deg 30deg auto" max-camera-orbit="180deg 90deg auto" disable-pan disable-tap
+                skybox-image="/models/bg.jpg" skybox-height="1.5m" shadow-intensity="1" environment-image="legacy"
                 camera-controls>
             </model-viewer>
 
@@ -279,7 +275,9 @@
 
         document.getElementById('modelViewer').addEventListener('load', function () {
             document.getElementById('loading').style.display = 'none';
+            document.getElementById('glb-container').style.opacity = '1';
         });
+
     </script>
 </body>
 
