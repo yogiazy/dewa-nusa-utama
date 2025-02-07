@@ -200,7 +200,7 @@
                 <div class="face"></div>
             </div>
         </div>
-        Loading...
+        <div id="pro-loading" style="display: flex; flex-direction: row;">Downloading 3D [<span style="color: rgb(82, 230, 14);">0%</span>]</div>
     </div>
     <div class="landing-container">
         <div id="glb-container">
@@ -278,8 +278,24 @@
         setInterval(updateCountdown, 1000);
         document.addEventListener('DOMContentLoaded', updateCountdown);
 
-        document.getElementById('modelViewer').addEventListener('load', function () {
-            document.getElementById('loading').style.display = 'none';
+        const modelViewer = document.getElementById('modelViewer');
+        const loadingContainer = document.getElementById('loading');
+        const loadingText = loadingContainer.querySelector('span');
+
+        modelViewer.addEventListener('progress', function (event) {
+            const progress = Math.floor(event.detail.totalProgress * 100);
+            const proLoading = document.getElementById('pro-loading');
+            // loadingText.textContent = `${progress}%`;
+            if (progress == 88 ) {
+                loadingText.textContent = '100%';
+                proLoading.innerHTML = 'Memuat 3D...';
+            } else {
+                loadingText.textContent = `${progress}%`;
+            }
+        });
+
+        modelViewer.addEventListener('load', function () {
+            loadingContainer.style.display = 'none';
             document.getElementById('glb-container').style.opacity = '1';
         });
 
