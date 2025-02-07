@@ -5,7 +5,7 @@
     <title>Dewa Nusa Utama</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="/img/logo-dnu.jpg">
+    <link rel="shortcut icon" type="image/x-icon" href="https://dewa-nusa-utama.vercel.app/img/logo.jpg">
     <meta name="description"
         content="PT Dewa Nusa Utama - Pengembang dan marketing perumahan terkemuka di Indonesia. Kami menyediakan solusi hunian modern dan nyaman.">
     <meta name="keywords"
@@ -14,14 +14,14 @@
     <meta property="og:title" content="PT Dewa Nusa Utama - Pengembang dan Marketing Perumahan">
     <meta property="og:description"
         content="PT Dewa Nusa Utama menyediakan solusi hunian modern dan nyaman di Indonesia.">
-    <meta property="og:image" content="/img/logo-dnu.jpg">
-    <meta property="og:url" content="https://www.dewanusautama.id">
+    <meta property="og:image" content="https://dewa-nusa-utama.vercel.app/img/logo.jpg">
+    <meta property="og:url" content="https://dewanusautama.id">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="PT Dewa Nusa Utama - Pengembang dan Marketing Perumahan">
     <meta name="twitter:description"
         content="PT Dewa Nusa Utama menyediakan solusi hunian modern dan nyaman di Indonesia.">
-    <meta name="twitter:image" content="/img/logo-dnu.jpg">
+    <meta name="twitter:image" content="https://dewa-nusa-utama.vercel.app/img/logo.jpg">
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
     <style>
         body {
@@ -44,7 +44,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 100vh;
+            height: 80vh;
             opacity: 0;
             transition: opacity 1s ease-in-out;
         }
@@ -70,6 +70,10 @@
         @media (min-width: 768px) {
             .logo-container img {
                 width: 30vw;
+            }
+
+            #glb-container {
+                height: 100vh;
             }
         }
 
@@ -200,12 +204,13 @@
     </div>
     <div class="landing-container">
         <div id="glb-container">
-            <model-viewer id="modelViewer" src="/models/rumah_modern_contemporer/scene.gltf" alt="A 3D model"
-                touch-action="pan-y" field-of-view="40deg" exposure="0.7" camera-orbit="-45deg 80deg 4m"
+            <model-viewer id="modelViewer" src="/models/rumah.glb" alt="A 3D model"
+                touch-action="pan-y" exposure="0.3"
                 min-camera-orbit="auto 30deg auto" max-camera-orbit="auto 90deg auto" disable-pan disable-tap
-                skybox-image="/models/bg.jpg" skybox-height="1.5m" shadow-intensity="1" environment-image="legacy"
+                shadow-intensity="1" environment-image="legacy"
                 camera-controls>
             </model-viewer>
+            <!-- skybox-image="/models/bg.jpg" skybox-height="20m" -->
 
         </div>
     </div>
@@ -239,11 +244,11 @@
             const modelViewer = document.getElementById('modelViewer');
 
             if (isMobileDevice()) {
-                modelViewer.setAttribute('camera-orbit', '-25deg 85deg 5m');
-                modelViewer.setAttribute('field-of-view', '50deg');
+                modelViewer.setAttribute('camera-orbit', '-20deg 85deg 2m');
+                modelViewer.setAttribute('field-of-view', '30deg');
             } else {
-                modelViewer.setAttribute('camera-orbit', '-45deg 85deg 4m');
-                modelViewer.setAttribute('field-of-view', '40deg');
+                modelViewer.setAttribute('camera-orbit', '30deg 85deg 9m');
+                modelViewer.setAttribute('field-of-view', '30deg');
             }
         }
         document.addEventListener('DOMContentLoaded', updateModelViewer);
